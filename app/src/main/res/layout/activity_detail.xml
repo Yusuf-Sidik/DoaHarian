@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".DetailActivity">
 
     <TextView
-        android:id="@+id/tv_judul"
+        android:id="@+id/judul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -20,17 +20,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/tv_ayat"
+        android:id="@+id/ayat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/ayat"
         android:textSize="14sp"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/tv_judul"
+        app:layout_constraintTop_toBottomOf="@id/judul"
         app:layout_editor_absoluteX="16dp"/>
     <TextView
-        android:id="@+id/tv_latin"
+        android:id="@+id/latin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -38,9 +38,9 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/tv_ayat"/>
+        app:layout_constraintTop_toBottomOf="@id/ayat"/>
     <TextView
-        android:id="@+id/tv_arti"
+        android:id="@+id/arti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -48,24 +48,6 @@
         android:textSize="14sp"
         android:textStyle="italic"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/tv_latin"/>
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="?attr/progressBarStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <Button
-        android:id="@+id/btn_all_doa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/show_all"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/latin"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

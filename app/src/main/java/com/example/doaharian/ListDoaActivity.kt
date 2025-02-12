@@ -1,5 +1,6 @@
 package com.example.doaharian
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.doaharian.adapter.DoaAdapter
 import com.example.doaharian.databinding.ActivityListDoaBinding
+import com.example.doaharian.dataclass.DataDoa
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -35,8 +37,10 @@ class ListDoaActivity : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvListDoa.addItemDecoration(itemDecoration)
 
+
         grtListDoa()
     }
+
 
     private fun grtListDoa() {
         binding.progressBar.visibility = View.VISIBLE
@@ -52,7 +56,7 @@ class ListDoaActivity : AppCompatActivity() {
             ) {
                 binding.progressBar.visibility = View.INVISIBLE
 
-                val listDoa = ArrayList<String>()
+                val listDoa = ArrayList<DataDoa>()
                 val result = String(responseBody)
 
                 Log.d(TAG, result)
@@ -63,11 +67,23 @@ class ListDoaActivity : AppCompatActivity() {
                     for (i in 0 until jsonArray.length()){
                         val jsonObject = jsonArray.getJSONObject(i)
                         val doa = jsonObject.getString("doa")
-                        listDoa.add(doa)
+                        val ayat = jsonObject.getString("ayat")
+                        val latin = jsonObject.getString("latin")
+                        val arti = jsonObject.getString("artinya")
+                        val doaItem = DataDoa(doa, ayat, latin, arti)
+                        listDoa.add(doaItem)
                     }
 
                     val adapter = DoaAdapter(listDoa)
                     binding.rvListDoa.adapter = adapter
+
+                    adapter.setOnItemClickCallback(object : DoaAdapter.OnItemClickCallback{
+                        override fun onItemClicked(data: String) {
+                            Toast.makeText(this@ListDoaActivity, data, Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@ListDoaActivity, DetailActivity::class.java)
+                            startActivity(intent)
+                        }
+                    })
                 }catch (e: Exception){
                     Toast.makeText(this@ListDoaActivity, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
