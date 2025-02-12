@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DoaHarian</string>
+    <string name="judul">Judul</string>
+    <string name="ayat">ayat</string>
+    <string name="latin">latin</string>
+    <string name="arti">arti</string>
+    <string name="show_all">Lihat semua doa</string>
+</resources>
